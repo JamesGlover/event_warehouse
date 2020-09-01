@@ -2,9 +2,6 @@
 
 # Lists of subjects (Doubt this'll get much use)
 class SubjectsController < ApplicationController
-  # Mark this as a JSONAPI controller, associating with the given resource
-  jsonapi resource: SubjectResource
-
   # Start with a base scope and pass to render_jsonapi
   def index
     subjects = Subject.all
@@ -14,10 +11,9 @@ class SubjectsController < ApplicationController
   # Call jsonapi_scope directly here so we can get behavior like
   # sparse fieldsets and statistics.
   def show
-    scope = jsonapi_scope(Subject.where(id: params[:id]))
-    instance = scope.resolve.first
+    instance = Subject.find_by(id: params[:id])
     raise JsonapiCompliable::Errors::RecordNotFound unless instance
 
-    render_jsonapi(instance, scope: false)
+    render_jsonapi(instance)
   end
 end

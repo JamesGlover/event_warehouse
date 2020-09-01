@@ -18,11 +18,10 @@ class SerializableEvent < JSONAPI::Serializable::Resource
   attribute :occured_at
   attribute :user_identifier
   attribute :lims_id
+  attribute :metadata
 
   belongs_to :event_type
 
   has_many :roles
   has_many :subjects
-
-  extra_attribute :metadata
 end

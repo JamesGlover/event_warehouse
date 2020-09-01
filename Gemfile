@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # TODO: We pretty much just use active record and active mailer, do we need rails?
-gem 'mysql2', '~> 0.4'
+gem 'mysql2'
 gem 'rails', '~> 5.2'
 
 # Rails dependencies
@@ -21,13 +21,15 @@ gem 'migration_comments'
 gem 'rest-client'
 
 # For JSON API support
-gem 'jsonapi-rails', '~> 0.3'
-gem 'jsonapi_suite', '~> 0.7'
-gem 'jsonapi_swagger_helpers', '~> 0.6', require: false
+# gem 'jsonapi-rails'
+# gem 'jsonapi_errorable'
+# gem 'jsonapi_suite'
+# gem 'jsonapi_swagger_helpers', require: false
 # Used by swagger to generate docs
 gem 'jsonapi_spec_helpers', require: false
 gem 'kaminari' # Pagination. Used by jsonapi_suite
 gem 'rack-cors', require: 'rack/cors'
+gem 'jsonapi-resources', '0.10.0.beta8'
 
 group :test, :development do
   gem 'database_cleaner'
@@ -36,7 +38,7 @@ group :test, :development do
   gem 'pry'
   gem 'pry-byebug', platform: :mri
   gem 'rspec-rails'
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'swagger-diff', '~> 1.1'
 end
 

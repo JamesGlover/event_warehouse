@@ -4,6 +4,5 @@
 # A Resource defines how to query and persist your Model. In other words:
 # a Model is to the database as Resource is to the API.
 # https://jsonapi-suite.github.io/jsonapi_suite/concepts#resources
-class ApplicationResource < JsonapiCompliable::Resource
-  use_adapter JsonapiCompliable::Adapters::ActiveRecord
+class ApplicationResource < JSONAPI::Resource
 end

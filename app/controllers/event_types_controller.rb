@@ -2,17 +2,13 @@
 
 # List event types
 class EventTypesController < ApplicationController
-  jsonapi resource: EventTypeResource
-
   def index
     render_jsonapi(EventType.all)
   end
 
   def show
-    scope = jsonapi_scope(EventType.where(id: params[:id]))
-    instance = scope.resolve.first
-    raise JsonapiCompliable::Errors::RecordNotFound unless instance
+    instance = EventType.find_by(id: params[:id])
 
-    render_jsonapi(instance, scope: false)
+    render_jsonapi(instance)
   end
 end
